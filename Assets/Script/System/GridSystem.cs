@@ -5,8 +5,8 @@ public class GridSystem : MonoBehaviour {
 
     //public variables goes here
 
-    public const float floFakegridwidth = 0.64f;
-    public const float floFakegridheight = 0.32f;
+    public const float floFakegridwidth = 1.6f;
+    public const float floFakegridheight = 0.9f;
 
     public GameObject gaobCurgrid;
     public float floCurgridX;
@@ -22,7 +22,7 @@ public class GridSystem : MonoBehaviour {
     public int intCurGridX;
     public int intCurGridY;
 
-    private bool disabled = false;
+    private bool disabled = true;
 
     // Use this for initialization
     void Start () {
@@ -31,8 +31,8 @@ public class GridSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        checkmouseposition();
+    }
 
     public void zoomin()
     {
@@ -83,15 +83,16 @@ public class GridSystem : MonoBehaviour {
         vec3MousePos = Input.mousePosition;
         vec3MousePos.z = 10;
         vec3MousePos = Camera.main.ScreenToWorldPoint(vec3MousePos);
-        intPregridX = Mathf.FloorToInt((vec3MousePos.x + 64) / floFakegridwidth) - 100;
-        intPregridY = Mathf.FloorToInt((vec3MousePos.y + 32) / floFakegridheight) - 100;
+
+        intPregridX = Mathf.FloorToInt((vec3MousePos.x + floFakegridwidth*100) / floFakegridwidth) - 100;
+        intPregridY = Mathf.FloorToInt((vec3MousePos.y + floFakegridheight*100) / floFakegridheight) - 100;
 
         //to those who might want to read this part
         //just dont...
 
         if ((((Mathf.Abs(intPregridX) % 2) == 1) && ((Mathf.Abs(intPregridY) % 2) == 0)) || (((Mathf.Abs(intPregridX) % 2) == 0) && ((Mathf.Abs(intPregridY) % 2) == 1)))
         {
-            if ((((vec3MousePos.y + 32) % floFakegridheight) * 2 + ((vec3MousePos.x + 64) % floFakegridwidth)) >= floFakegridwidth)
+            if ((((vec3MousePos.y + floFakegridheight*100) % floFakegridheight) * 2 + ((vec3MousePos.x + floFakegridwidth*100) % floFakegridwidth)) >= floFakegridwidth)
             {
                 //right top
                 //Debug.Log("right top");
@@ -107,7 +108,7 @@ public class GridSystem : MonoBehaviour {
         else
         {
 
-            if (((vec3MousePos.y + 32) % floFakegridheight) * 2 > ((vec3MousePos.x + 64) % floFakegridwidth))
+            if (((vec3MousePos.y + floFakegridheight*100) % floFakegridheight) * 2 > ((vec3MousePos.x + floFakegridwidth*100) % floFakegridwidth))
             {
                 //left top
                 //Debug.Log("left top");
@@ -127,14 +128,14 @@ public class GridSystem : MonoBehaviour {
         floCurgridY = (intPregridY) * floFakegridheight;
 
 
-        intCurGridX = (intPregridX - intPregridY + 29) / 2;
-        intCurGridY = intPregridY + intCurGridX - 5;
+        intCurGridX = (intPregridX - intPregridY + 29) / 2 - 11;
+        intCurGridY = intPregridY + intCurGridX;
 
         Debug.Log("x:" + intCurGridX.ToString() + ",y:" + intCurGridY.ToString());
         //Debug.Log(floCurgridX);
         //Debug.Log(floCurgridY);
         //Debug.Log(gridXYtoVec(intCurGridX, intCurGridY));
-        if ((intCurGridX < 1) || (intCurGridY < 1) || (intCurGridX > 28) || (intCurGridY > 18))
+        if ((intCurGridX < 1) || (intCurGridY < 1) || (intCurGridX > 6) || (intCurGridY > 6))
         {
 
         }
@@ -146,6 +147,6 @@ public class GridSystem : MonoBehaviour {
 
     public Vector3 gridXYtoVec(int gridx, int gridy)
     {
-        return new Vector3((gridx + gridy - 24) * 0.64f, (gridy - gridx + 5) * 0.32f, 0);
+        return new Vector3((gridx + gridy - 24) * floFakegridwidth, (gridy - gridx + 5) * floFakegridheight, 0);
     }
 }
