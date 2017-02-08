@@ -1,9 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : Singleton<GameManager>
+{
 
-    protected GameManager() { } //good coding practices right here fucker
+    protected GameManager() { }
+
+    //public variables goes here
+    public int turn_num = 1;
+
+
+    
+
+    public void NextTurn()
+    {
+        //turn+1, update all income
+
+
+    }
+
+
 
     public void replay()
     {
