@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour {
     public Text TurnText;
     public GameObject BuildMenu;
 
+    public Text foodnum;
+    public Text ironnum;
+    public Text populationnum;
+    public Text fightnum;
 
     //public variables
     public bool BuildMenuStatus = false;
@@ -20,8 +24,12 @@ public class UIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        foodnum.text = GameManager.Instance.food.ToString();
+        ironnum.text = GameManager.Instance.iron.ToString();
+        populationnum.text = GameManager.Instance.population.ToString();
+        fightnum.text = GameManager.Instance.fight.ToString();
+
+    }
 
     public void onNextTurnClicked() {
         //change next turn text

@@ -131,7 +131,7 @@ public class GridSystem : MonoBehaviour {
         intCurGridX = (intPregridX - intPregridY + 29) / 2 - 11;
         intCurGridY = intPregridY + intCurGridX;
 
-        Debug.Log("x:" + intCurGridX.ToString() + ",y:" + intCurGridY.ToString());
+        //Debug.Log("x:" + intCurGridX.ToString() + ",y:" + intCurGridY.ToString());
         //Debug.Log(floCurgridX);
         //Debug.Log(floCurgridY);
         //Debug.Log(gridXYtoVec(intCurGridX, intCurGridY));
