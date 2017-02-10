@@ -25,6 +25,24 @@ public class GameManager : Singleton<GameManager>
     public void NextTurn()
     {
         //turn+1, update all income
+        turn_num += 1;
+        for (int i = 1; i <= 6; i++)
+        {
+            for (int j = 1; j <= 6; j++)
+            {
+                switch (buildmatrix[i,j])
+                {
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
 
     }

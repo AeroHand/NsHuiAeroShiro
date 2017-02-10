@@ -14,8 +14,15 @@ public class UIManager : MonoBehaviour {
     public Text populationnum;
     public Text fightnum;
 
+    public GameObject event1panel;
+    public Text event1text;
+
+    public GameObject event2panel;
+
     //public variables
     public bool BuildMenuStatus = false;
+
+
 
     // Use this for initialization
     void Start () {
@@ -34,7 +41,8 @@ public class UIManager : MonoBehaviour {
     public void onNextTurnClicked() {
         //change next turn text
         TurnText.text = "Processing...";
-        GameManager.Instance.NextTurn();
+        
+        //StartCoroutine(event1system);
     }
 
     public void onBuildMenuClicked() {
@@ -42,6 +50,33 @@ public class UIManager : MonoBehaviour {
         BuildMenu.SetActive(BuildMenuStatus);
     }
 
-    
+    IEnumerator event1system()
+    {
+        yield return new WaitForSeconds(2);
+        GameManager.Instance.NextTurn();
+        yield return new WaitForSeconds(2);
+        event1("a peaceful day. nothing happened.");       
+    }
+
+    public void event1(string info)
+    {
+        //show event panel
+        event1panel.SetActive(true);
+        //change event show text
+        event1text.text = info;
+    }
+
+    public void onevent1click()
+    {
+        
+    }
+
+    private IEnumerator eventsystem()
+    {
+        yield return new WaitForSeconds(2);
+        GameManager.Instance.NextTurn();
+        yield return new WaitForSeconds(2);
+        event1("a peaceful day. nothing happened.");
+    }
 
 }
