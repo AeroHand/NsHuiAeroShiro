@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 29a8f6661c19a3543b9fdd92d45bc2ef
+timeCreated: 1486956162
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Drift Wood
+  fontNames:
+  - Drift Wood
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

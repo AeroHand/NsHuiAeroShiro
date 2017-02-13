@@ -10,14 +10,19 @@ public class GameManager : Singleton<GameManager>
     public int turn_num = 1;
     
     //resources
-    public int food = 100;
-    public int iron = 100;
+    public int food = 10;
+    public int iron = 10;
     public int population = 10;
     public int fight = 10;
 
     //building status
     public bool buildingstatus = false;
     public int buildingtype = 0;
+
+    public int foodefficiency = 2;
+    public int ironefficiency = 2;
+    public int populationefficiency = 2;
+    public int fightefficiency = 2;
 
     //grid status matrix
     public int[,] buildmatrix = new int[7, 7];
@@ -33,10 +38,16 @@ public class GameManager : Singleton<GameManager>
                 switch (buildmatrix[i,j])
                 {
                     case 1:
+                        //farm, +food
+                        food += foodefficiency;
                         break;
                     case 2:
+                        //factory,+iron
+                        iron += ironefficiency;
                         break;
                     case 3:
+                        //barrack,+fight
+                        fight += fightefficiency;
                         break;
                     default:
                         break;
